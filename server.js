@@ -4,14 +4,14 @@ const WebSocket = require('ws');
 const path = require('path');
 const EventHubReader = require('./scripts/event-hub-reader.js');
 
-const iotHubConnectionString = 'HostName=myiothubrelb.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=mqiE/9eIFEJ10CFUexe35SghDv5xJsSHrAIoTLUsXao=';
+const iotHubConnectionString = process.env.IotHubConnectionString;
 if (!iotHubConnectionString) {
   console.error(`Environment variable IotHubConnectionString must be specified.`);
   return;
 }
 console.log(`Using IoT Hub connection string [${iotHubConnectionString}]`);
 
-const eventHubConsumerGroup = 'webconsumer';
+const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
 console.log(eventHubConsumerGroup);
 if (!eventHubConsumerGroup) {
   console.error(`Environment variable EventHubConsumerGroup must be specified.`);
